@@ -9,17 +9,28 @@ public class TicketOffice
     /// </summary>
     private long Amount { get; set; }
 
-    private List<Ticket> Tickets = new List<Ticket>();
+    private List<Ticket> _tickets = new List<Ticket>();
 
     public TicketOffice(long amount, Ticket ticket)
     {
         Amount = amount;
-        Tickets.Add(ticket);
+        _tickets.Add(ticket);
     }
 
     public Ticket GetTicket()
     {
-        var ticket = Tickets.;
-        return Tickets.
+        var ticket = _tickets.First();
+        _tickets.RemoveAt(0);
+        return ticket;
+    }
+
+    public void MinusAmount(long amount)
+    {
+        Amount -= amount;
+    }
+
+    public void PlusAmount(long amount)
+    {
+        Amount += amount;
     }
 }
