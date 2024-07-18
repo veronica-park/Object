@@ -19,17 +19,6 @@ public class TicketSeller
 
     public void SellTo(Audience audience)
     {
-        if (audience.GetBag().HasInvitation())
-        {
-            var ticket = TicketOffice.GetTicket();
-            audience.GetBag().SetTicket(ticket);
-        }
-        else
-        {
-            var ticket = TicketOffice.GetTicket();
-            audience.GetBag().MinusAmount(ticket.GetFee());
-            TicketOffice.PlusAmount(ticket.GetFee());
-            audience.GetBag().SetTicket(ticket);
-        }
+        TicketOffice.PlusAmount(audience.Buy(TicketOffice.GetTicket()));
     }
 }

@@ -11,8 +11,23 @@ public class Audience
         Bag = bag;
     }
 
-    public Bag GetBag()
+    // public Bag GetBag()
+    // {
+    //     return Bag;
+    // }
+
+    public long Buy(Ticket ticket)
     {
-        return Bag;
+        if (Bag.HasInvitation())
+        {
+            Bag.SetTicket(ticket);
+            return 0;
+        }
+        else
+        {
+            Bag.SetTicket(ticket);
+            Bag.MinusAmount(ticket.GetFee());
+            return ticket.GetFee();
+        }
     }
 }
