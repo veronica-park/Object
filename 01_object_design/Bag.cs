@@ -21,8 +21,23 @@ public class Bag
         Amount = amount;
         Invitation = invitation;
     }
+
+    public long Hold(Ticket ticket)
+    {
+        if (HasInvitation())
+        {
+            SetTicket(ticket);
+            return 0;
+        }
+        else
+        {
+            SetTicket(ticket);
+            MinusAmount(ticket.GetFee());
+            return ticket.GetFee();
+        }
+    }
     
-    public bool HasInvitation()
+    private bool HasInvitation()
     {
         return Invitation is not null;
     }
@@ -32,17 +47,17 @@ public class Bag
         return Ticket is not null;
     }
 
-    public void SetTicket(Ticket ticket)
+    private void SetTicket(Ticket ticket)
     {
         Ticket = ticket;
     }
 
-    public void MinusAmount(long amount)
+    private void MinusAmount(long amount)
     {
         Amount -= amount;
     }
 
-    public void PlusAmount(long amount)
+    private void PlusAmount(long amount)
     {
         Amount += amount;
     }

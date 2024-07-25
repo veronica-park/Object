@@ -19,6 +19,6 @@ public class TicketSeller
 
     public void SellTo(Audience audience)
     {
-        TicketOffice.PlusAmount(audience.Buy(TicketOffice.GetTicket()));
+        TicketOffice.SellTicketTo(audience);
     }
 }

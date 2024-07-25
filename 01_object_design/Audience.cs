@@ -18,16 +18,6 @@ public class Audience
 
     public long Buy(Ticket ticket)
     {
-        if (Bag.HasInvitation())
-        {
-            Bag.SetTicket(ticket);
-            return 0;
-        }
-        else
-        {
-            Bag.SetTicket(ticket);
-            Bag.MinusAmount(ticket.GetFee());
-            return ticket.GetFee();
-        }
+        return Bag.Hold(ticket);
     }
 }

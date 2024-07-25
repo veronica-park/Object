@@ -17,6 +17,12 @@ public class TicketOffice
         _tickets.Add(ticket);
     }
 
+    public void SellTicketTo(Audience audience)
+    {
+        var ticket = GetTicket();
+        PlusAmount(audience.Buy(ticket));
+    }
+
     public Ticket GetTicket()
     {
         var ticket = _tickets.First();
@@ -24,12 +30,12 @@ public class TicketOffice
         return ticket;
     }
 
-    public void MinusAmount(long amount)
+    private void MinusAmount(long amount)
     {
         Amount -= amount;
     }
 
-    public void PlusAmount(long amount)
+    private void PlusAmount(long amount)
     {
         Amount += amount;
     }
